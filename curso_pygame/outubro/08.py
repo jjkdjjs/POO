@@ -19,8 +19,6 @@ pygame.display.set_caption("SPACESHIPS - aulas cumulativas")
 relogio = pygame.time.Clock()
 fonte = pygame.font.Font(None, 30)
 fonte_grande = pygame.font.Font(None, 55)
-obstaculo = pygame.Rect(375, 50, 50, 50)
-cor_obstaculo = (255, 200, 80, 80)
 nave = pygame.Rect(380, 425, 40, 40)
 tiros = []
 # 10. LOOP PRINCIPAL
@@ -45,14 +43,9 @@ while rodando:
     nave.x = max(0, min(nave.x, LARGURA - nave.width))
     for tiro in tiros:
         tiro.y -= 9
-    for tiro in tiros[:]:
-        if tiro.colliderect(obstaculo):
-            cor_obstaculo = (0, 255, 0)
-            tiros.remove(tiro)
 
     # DESENHAR: limpar a tela antes de redesenhar os objetos
     tela.fill(COR_FUNDO)
-    pygame.draw.rect(tela, cor_obstaculo, obstaculo)
     pygame.draw.polygon(tela, COR_NAVE, [
         (nave.centerx, nave.top),
         (nave.left, nave.bottom),
