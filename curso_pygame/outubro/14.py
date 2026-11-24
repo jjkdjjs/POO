@@ -143,13 +143,6 @@ while rodando:
     direcao, resto_x = mover_frota(
         inimigos, direcao, resto_x, velocidade, dt
     )
-    # Percorrer copias impede pular objetos removidos.
-    for tiro in tiros[:]:
-        for alien in inimigos[:]:
-            if tiro.colliderect(alien):
-                inimigos.remove(alien)
-                tiros.remove(tiro)
-                break
 
     # DESENHAR: limpar a tela antes de redesenhar os objetos
     tela.fill(COR_FUNDO)
